@@ -177,7 +177,7 @@ class OpenEphysBinaryRawIO(BaseRawIO):
                 for stream_index, info in self._evt_streams[block_index][seg_index].items():
                     for name in _possible_event_stream_names:
                         if name + '_npy' in info:
-                            data = np.load(info[name + '_npy'], mmap_mode='r')
+                            data = np.load(info[name + '_npy'], mmap_mode='r', allow_pickle=True)
                             info[name] = data
 
                     # check that events have timestamps
